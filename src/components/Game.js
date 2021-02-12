@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDom from 'react-dom'
 import Clicker from './Clicker.js'
 import ScoreBoard from './ScoreBoard.js'
@@ -13,32 +13,55 @@ export default function Game () {
       height: '100px',
       backgroundColor: 'green',
       zIndex: '100'
-    }
+    },
+    blue: true
   })
 
   function handleAddCat (value) {
-    changeState({ ...state, score: state.score + value })
+    changeState({ ...state, score: state.score + value, block: { ...state.block } })
   }
-
+  /*
   function removeButton (timeRemoved) {
-    changeState = { block: { display: 'none', ...state.block } }
-    console.log(state.block)
-    /*
-    setTimeout(() => {
-      changeState = { block: { ...state.block, display: 'inicial' } }
-      console.log(state.block)
+    changeState(() => ({ ...state, block: { display: 'none' } }))
+    console.log(state)
+
+    const styleChange = setTimeout(() => {
+      changeState(() => ({
+        ...state,
+        block: {
+          display: 'block',
+          position: 'relative',
+          height: '50px',
+          backgroundColor: 'blue',
+          zIndex: '100'
+        }
+      }))
+      console.log(state)
     }, timeRemoved)
-    */
+    return () => { clearTimeout(styleChange) }
   }
-  const timer = (timerValue, cats, elementId) => {
-    const element = document.getElementById(elementId)
-    console.log(element)
-    handleAddCat(cats)
-    setTimeout(() => {
-    }, timerValue)
+  */
+  let blue = false
+  function setColor (ElementId) {
+    const el = document.getElementById(ElementId)
+    if (blue === true) {
+      blue = false
+      el.style.color = 'pink'
+      console.log('blue 1 fired')
+    } else if (blue === false) {
+      blue = true
+      el.style.color = 'green'
+      console.log('blue2 fired')
+    }
   }
+  useEffect(() => {
+    setColor('add1')
+    console.log('rerendered')
+  }
+  )
+
   let cat = {
-    color: 'blue',
+    color: 'pink',
     PointerEvent: 'none'
   }
   var squareStyle = {
@@ -50,6 +73,7 @@ export default function Game () {
     <div>
       <ScoreBoard style={squareStyle} score={state.score} />
       <Clicker
+        id='add1'
         style={cat}
         handleClick={() => handleAddCat(1)}
         buttonName='Get a kitty'
@@ -57,7 +81,7 @@ export default function Game () {
       <BlockedClicker
         id='box'
         block={state.block}
-        removeButton={() => removeButton(1000)}
+        removeButton={() => handleAddCat(1)}
         handleClick={() => handleAddCat(5)}
         buttonName='Get a box of kitties'
       />
