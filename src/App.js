@@ -1,5 +1,6 @@
 import './App.css'
 import Game from './components/Game'
+import WindowWidth from './components/WindowWidth'
 
 function App () {
   return (
