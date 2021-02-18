@@ -2,9 +2,11 @@ import React from 'react'
 
 export default function BlockedClicker (props) {
   function click () {
+    /*
     setTimeout(() => {
       props.removeButton()
     }, 500)
+    */
     return props.handleClick()
   }
   return (

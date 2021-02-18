@@ -16,9 +16,15 @@ export default function Game () {
   }
 
   let [color, changeColor] = useState('green')
-  function setColor (elementID) {
-    const element = document.getElementById(elementID)
-    console.log(element)
+  function setColor () {
+    color === 'green' ? changeColor('pink') : changeColor('blue')
+    console.log('the fuction that changes color has fired')
+    console.log(color)
+  }
+  let fiveCatButtonStyle = {
+    color: color,
+    width: '40px'
+
   }
   useEffect(() => {
     window.addEventListener('mousedown', function () { setColor('add1') })
@@ -36,8 +42,8 @@ export default function Game () {
       />
       <BlockedClicker
         id='box'
+        style={fiveCatButtonStyle}
         block={state.block}
-        removeButton={() => handleAddCat(1)}
         handleClick={() => handleAddCat(5)}
         buttonName='Get a box of kitties'
       />
