@@ -9,25 +9,23 @@ export default function Game () {
   let [state, changeState] = useState({
     score: 0
   })
-
-
   function handleAddCat (value) {
     return changeState({ score: state.score + value })
   }
 
-  let [color, changeColor] = useState('green')
-  function setColor () {
-    color === 'green' ? changeColor('pink') : changeColor('blue')
-    console.log('the fuction that changes color has fired')
+  const [color, changeColor] = useState(false)
+  const setColor = () => {
+    changeColor(!color)
     console.log(color)
   }
-  let fiveCatButtonStyle = {
-    color: color,
-    width: '40px'
-
+  const fiveCatButtonStyle = {
+    color: 'green'
+  }
+  const fiveCatChange = {
+    color: 'pink'
   }
   useEffect(() => {
-    window.addEventListener('mousedown', function () { setColor('add1') })
+    window.addEventListener('mousedown', function () { setColor() })
     console.log('rerendered')
   }, [])
 
@@ -42,7 +40,7 @@ export default function Game () {
       />
       <BlockedClicker
         id='box'
-        style={fiveCatButtonStyle}
+        style={color ? fiveCatChange : fiveCatButtonStyle}
         block={state.block}
         handleClick={() => handleAddCat(5)}
         buttonName='Get a box of kitties'
