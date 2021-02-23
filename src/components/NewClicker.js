@@ -8,16 +8,16 @@ const notClickedStyle = {
 }
 export default function Clicker (props) {
   const [timer, setTimer] = useState(false)
-  const [counter, setCounter] = useState(5)
+  const [counter, setCounter] = useState(props.counter)
   function handleClick () {
     setTimer(true)
-    console.log(timer, counter)
+    props.handleClick()
   }
   const handleCounter = () => {
     setCounter(counter - 1)
     if (counter < 1) {
       setTimer(false)
-      setCounter(6)
+      setCounter(props.counter)
     }
   }
   const cooldown = () => {
@@ -26,14 +26,17 @@ export default function Clicker (props) {
     let hour
     let addZero
     let addZeroMin
+    let addZeroHour
     addZero = (counter % 60 < 10 || counter) < 10 ? '0' : ''
     addZeroMin = (Math.floor((counter / 60) % 60)) < 10 ? '0' : ''
+    addZeroHour = (Math.floor((counter / 60) / 60 % 60)) < 10 ? '0' : ''
     sec = `cooldown ${addZero}${counter}s`
     min = `cooldown ${addZeroMin}${Math.floor(counter / 60)}:${addZero}${counter % 60}`
     hour = (
-    `cooldown ${Math.floor((counter / 60) / 60)}:
-    ${addZeroMin}${Math.floor((counter / 60) % 60)}:
-    ${addZero}${Math.floor((counter % 60))}`)
+      `cooldown ${addZeroHour}${Math.floor((counter / 60) / 60)}:
+      ${addZeroMin}${Math.floor((counter / 60) % 60)}:
+      ${addZero}${Math.floor((counter % 60))}`
+    )
 
     if (counter < 60) {
       return sec

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import ReactDom from 'react-dom'
 import Clicker from './Clicker.js'
 import ScoreBoard from './ScoreBoard.js'
-import BlockedClicker from './BlockedClicker.js'
 import WindowWidth from './WindowWidth.js'
+import NewClicker from './NewClicker.js'
 
 export default function Game () {
   let [state, changeState] = useState({
@@ -38,21 +38,11 @@ export default function Game () {
         handleClick={() => handleAddCat(1)}
         buttonName='Get a kitty'
       />
-      <BlockedClicker
-        id='box'
-        style={color ? fiveCatChange : fiveCatButtonStyle}
-        block={state.block}
+      <NewClicker
+        counter={.5}
         handleClick={() => handleAddCat(5)}
-        buttonName='Get a box of kitties'
       />
-      <Clicker
-        handleClick={() => handleAddCat(10)}
-        buttonName='Rob other cat ladies house'
-      />
-      <Clicker
-        handleClick={() => handleAddCat(50)}
-        buttonName='Airdrop cats'
-      />
+
       <WindowWidth />
     </div>
   )

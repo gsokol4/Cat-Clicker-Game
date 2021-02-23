@@ -7,7 +7,7 @@ import NewClicker from './components/NewClicker'
 function App () {
   return (
     <div className='App'>
-      <NewClicker />
+      <Game />
     </div>
   )
 }
