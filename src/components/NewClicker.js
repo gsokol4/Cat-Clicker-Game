@@ -10,32 +10,14 @@ const visibility = {
   visibility: 'hidden'
 }
 export default function Clicker (props) {
+  // timer = is the button in a delay after being clicked
   const [timer, setTimer] = useState(false)
+  // counter = delay after buttton click
   const [counter, setCounter] = useState(props.counter)
-  const [catCountCheck, setCatCountCheck] = useState(true)
+  // style = the style being applied to a current button
   const [elStyle, setElStyle] = useState(visibility)
 
-  function handleClick () {
-    setTimer(true)
-    props.handleClick()
-  }
-  const handleCounter = () => {
-    setCounter(counter - 1)
-    if (counter < 1) {
-      setTimer(false)
-      setCounter(props.counter)
-    }
-  }
-
-  let returnStyle = () => {
-    if (props.cats > 8) {
-      let style = timer ? props.redStyle : props.blackStyle
-      console.log(props.blackStyle)
-      return style
-    } else {
-      return visibility
-    }
-  }
+  // this is just a clock for the when timer is on
   const cooldown = () => {
     let sec
     let min
@@ -53,7 +35,6 @@ export default function Clicker (props) {
       ${addZeroMin}${Math.floor((counter / 60) % 60)}:
       ${addZero}${Math.floor((counter % 60))}`
     )
-
     if (counter < 60) {
       return sec
     } else if (counter < 3600) {
@@ -62,34 +43,48 @@ export default function Clicker (props) {
 
     return counter
   }
-  const check = () => {
-    console.log(props.cats.score)
-    props.cats.score < 5 ? setElStyle(visibility) : changeStyle()
-  }
-  useEffect(() => {
-    window.addEventListener('click', check)
-    console.log(catCountCheck)
-    console.log(props.cats)
-    return () => { window.removeEventListener('click', check) }
-  }, [props.cats.score])
+  // effect that checks all clicks to edit the style when above a #
 
   useEffect(() => {
-    const interval = setInterval(() => handleCounter(), 1000)
+    window.addEventListener('click', check)
+    return () => { window.removeEventListener('click', check) }
+  }, [props.cats.score])
+  const check = () => {
+    console.log('check fired')
+    props.cats.score < 5 ? setElStyle(visibility) : setElStyle(notClickedStyle)
+  }
+  // effect for when the counter changes
+  useEffect(() => {
+    const interval = setInterval(() => { changeStyle(); handleCounter() }, 1000)
     return () => {
       clearInterval(interval)
     }
   }, [counter])
-  let functionCalled = timer ? () => {} : () => { handleClick(); changeStyle() }
-  let changeStyle = () => {
+
+  const changeStyle = () => {
+    if (props.cats.score < 5) { return }
     timer ? setElStyle(timerStyle) : setElStyle(notClickedStyle)
-    setElStyle(timerStyle)
-    console.log(elStyle)
   }
+  const handleCounter = () => {
+    setCounter(counter - 1)
+    if (counter < 1) {
+      setTimer(false)
+      setCounter(props.counter)
+    }
+  }
+  // this is what happens when you click the button
+  const functionCalled = timer ? () => {} : () => { handleClick() }
+
+  function handleClick () {
+    setTimer(true)
+    props.handleClick()
+  }
+
   return (
     <div>
       <button
         style={elStyle}
-        onClick={() => { functionCalled(); changeStyle() }}
+        onClick={() => { functionCalled() }}
       >
         {`${JSON.stringify(elStyle)}`}
         {timer ? cooldown() : 'get a box of kitties'}
