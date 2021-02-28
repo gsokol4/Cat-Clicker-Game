@@ -5,6 +5,18 @@ import ScoreBoard from './ScoreBoard.js'
 import WindowWidth from './WindowWidth.js'
 import NewClicker from './NewClicker.js'
 
+const invisible = {
+  visibility: 'hidden'
+}
+const redStyle = {
+  color: 'red',
+  backgroundColor: 'transparent',
+  border: 'none'
+}
+const blackStyle = {
+  color: 'black'
+}
+
 export default function Game () {
   let [state, changeState] = useState({
     score: 0
@@ -18,16 +30,6 @@ export default function Game () {
     changeColor(!color)
     console.log(color)
   }
-  const fiveCatButtonStyle = {
-    color: 'green'
-  }
-  const fiveCatChange = {
-    color: 'pink'
-  }
-  useEffect(() => {
-    window.addEventListener('mousedown', function () { setColor() })
-    console.log('rerendered')
-  }, [])
 
   return (
     <div>
@@ -39,11 +41,13 @@ export default function Game () {
         buttonName='Get a kitty'
       />
       <NewClicker
+        cats={state}
         counter={.5}
+        visibility={invisible}
+        redStyle={redStyle}
+        blackStyle={blackStyle}
         handleClick={() => handleAddCat(5)}
       />
-
-      <WindowWidth />
     </div>
   )
 }

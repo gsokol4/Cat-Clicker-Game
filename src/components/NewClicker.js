@@ -6,9 +6,15 @@ const timerStyle = {
 const notClickedStyle = {
   color: 'black'
 }
+const visibility = {
+  visibility: 'hidden'
+}
 export default function Clicker (props) {
   const [timer, setTimer] = useState(false)
   const [counter, setCounter] = useState(props.counter)
+  const [catCountCheck, setCatCountCheck] = useState(true)
+  const [elStyle, setElStyle] = useState(visibility)
+
   function handleClick () {
     setTimer(true)
     props.handleClick()
@@ -18,6 +24,16 @@ export default function Clicker (props) {
     if (counter < 1) {
       setTimer(false)
       setCounter(props.counter)
+    }
+  }
+
+  let returnStyle = () => {
+    if (props.cats > 8) {
+      let style = timer ? props.redStyle : props.blackStyle
+      console.log(props.blackStyle)
+      return style
+    } else {
+      return visibility
     }
   }
   const cooldown = () => {
@@ -46,22 +62,38 @@ export default function Clicker (props) {
 
     return counter
   }
+  const check = () => {
+    console.log(props.cats.score)
+    props.cats.score < 5 ? setElStyle(visibility) : changeStyle()
+  }
+  useEffect(() => {
+    window.addEventListener('click', check)
+    console.log(catCountCheck)
+    console.log(props.cats)
+    return () => { window.removeEventListener('click', check) }
+  }, [props.cats.score])
+
   useEffect(() => {
     const interval = setInterval(() => handleCounter(), 1000)
-    console.log()
     return () => {
       clearInterval(interval)
     }
   }, [counter])
-
-  let functionCalled = timer ? () => {} : () => { handleClick() }
+  let functionCalled = timer ? () => {} : () => { handleClick(); changeStyle() }
+  let changeStyle = () => {
+    timer ? setElStyle(timerStyle) : setElStyle(notClickedStyle)
+    setElStyle(timerStyle)
+    console.log(elStyle)
+  }
   return (
     <div>
       <button
-        style={timer ? timerStyle : notClickedStyle}
-        onClick={functionCalled}
+        style={elStyle}
+        onClick={() => { functionCalled(); changeStyle() }}
       >
+        {`${JSON.stringify(elStyle)}`}
         {timer ? cooldown() : 'get a box of kitties'}
+        {`${props.cats.score}`}
       </button>
     </div>
   )
