@@ -4,6 +4,8 @@ import Clicker from './Clicker.js'
 import ScoreBoard from './ScoreBoard.js'
 import WindowWidth from './WindowWidth.js'
 import NewClicker from './NewClicker.js'
+import Background from './Background.js'
+
 
 const invisible = {
   visibility: 'hidden'
@@ -33,6 +35,7 @@ export default function Game () {
 
   return (
     <div>
+      <Background />
       <ScoreBoard style={state.block} score={state.score} />
       <Clicker
         id='add1'

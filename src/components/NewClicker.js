@@ -86,9 +86,7 @@ export default function Clicker (props) {
         style={elStyle}
         onClick={() => { functionCalled() }}
       >
-        {`${JSON.stringify(elStyle)}`}
         {timer ? cooldown() : 'get a box of kitties'}
-        {`${props.cats.score}`}
       </button>
     </div>
   )
