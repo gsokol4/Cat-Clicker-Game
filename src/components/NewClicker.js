@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react'
-
+import '../paper.css'
 const timerStyle = {
   color: 'red'
 }
 const notClickedStyle = {
   color: 'black'
 }
-const visibility = {
-  visibility: 'hidden'
-}
+
 export default function Clicker (props) {
   // timer = is the button in a delay after being clicked
   const [timer, setTimer] = useState(false)
   // counter = delay after buttton click
   const [counter, setCounter] = useState(props.counter)
   // style = the style being applied to a current button
-  const [elStyle, setElStyle] = useState(visibility)
+  const [elStyle, setElStyle] = useState(notClickedStyle)
 
   // this is just a clock for the when timer is on
   const cooldown = () => {
@@ -43,26 +41,15 @@ export default function Clicker (props) {
 
     return counter
   }
-  // effect that checks all clicks to edit the style when above a #
-
-  useEffect(() => {
-    window.addEventListener('click', check)
-    return () => { window.removeEventListener('click', check) }
-  }, [props.cats.score])
-  const check = () => {
-    console.log('check fired')
-    props.cats.score < 5 ? setElStyle(visibility) : setElStyle(notClickedStyle)
-  }
   // effect for when the counter changes
   useEffect(() => {
-    const interval = setInterval(() => { changeStyle(); handleCounter() }, 1000)
+    const interval = setInterval(() => { handleCounter() }, 1000)
     return () => {
       clearInterval(interval)
     }
   }, [counter])
 
   const changeStyle = () => {
-    if (props.cats.score < 5) { return }
     timer ? setElStyle(timerStyle) : setElStyle(notClickedStyle)
   }
   const handleCounter = () => {
@@ -83,10 +70,10 @@ export default function Clicker (props) {
   return (
     <div>
       <button
-        style={elStyle}
+        className={timer ? 'btn-danger' : 'btn-success-outline'}
         onClick={() => { functionCalled() }}
       >
-        {timer ? cooldown() : 'get a box of kitties'}
+        {timer ? cooldown() : props.name} {` +${props.catsPerClick} `} {props.emoji}
       </button>
     </div>
   )
