@@ -11,7 +11,7 @@ export default function BackDrop (props) {
   const backdropStyle = {
     backgroundColor: 'black',
     opacity: 0.9,
-    height: '100vh',
+    height: '100%',
     width: (backDropWidth / 10) * 6,
     position: 'absolute',
     left: (backDropWidth / 10) * 2,
