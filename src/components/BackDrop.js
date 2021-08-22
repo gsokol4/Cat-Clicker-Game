@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
 export default function BackDrop (props) {
-  const [backDropWidth, changeBackDropWidth] = useState(window.innerWidth)
+  const [backDropWidth, changeBackDropWidth] = useState(document.body.clientWidth)
   function handleInnerWidthChange () {
-    changeBackDropWidth(window.innerWidth)
+    changeBackDropWidth(document.body.clientWidth)
   }
   useEffect(() => {
     window.addEventListener('resize', handleInnerWidthChange)
@@ -20,8 +20,8 @@ export default function BackDrop (props) {
   const backDropPhone = {
     backgroundColor: 'black',
     opacity: 0.8,
-    height: '100vh',
-    width: backDropWidth,
+    height: '100%',
+    width: document.body.clientWidth,
     position: 'absolute',
     zIndex: -1
   }

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import '../paper.css'
+import './newClicker.css'
 
-export default function Clicker(props) {
+export default function Clicker (props) {
   // timer = is the button in a delay after being clicked
   const [timer, setTimer] = useState(false)
   // counter = delay after buttton click
@@ -42,26 +43,26 @@ export default function Clicker(props) {
     props.handleClick()
   }
 
-    // effect for when the counter changes
-    useEffect(() => {
-      const handleCounter = () => {
-        setCounter(counter - 1)
-        if (counter < 1) {
-          setTimer(false)
-          setCounter(props.counter)
-        }
+  // effect for when the counter changes
+  useEffect(() => {
+    const handleCounter = () => {
+      setCounter(counter - 1)
+      if (counter < 1) {
+        setTimer(false)
+        setCounter(props.counter)
       }
-  
-      const interval = timer ? setInterval(() => { handleCounter() }, 1000) : setCounter(props.counter)
-      return () => {
-        clearInterval(interval)
-      }
-    }, [timer, props.counter, counter])
+    }
+
+    const interval = timer ? setInterval(() => { handleCounter() }, 1000) : setCounter(props.counter)
+    return () => {
+      clearInterval(interval)
+    }
+  }, [timer, props.counter, counter])
 
   return (
-    <div>
+    <div className={props.className}>
       <button
-        className={timer ? 'btn-danger' : 'btn-success-outline'}
+        className={(timer ? 'btn-danger' : 'btn-success-outline') + ' clickerButton'}
         onClick={() => { functionCalled() }}
       >
         {timer ? cooldown() : props.name} {` +${props.catsPerClick} `} {props.emoji}

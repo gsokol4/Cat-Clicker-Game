@@ -10,7 +10,7 @@ export default function ScoreBoard (props) {
           <p>click the below buttons to aquire kittens</p>
           <p>the automate section allows you to spend cats to earn automated clicks</p>
         </>}
-      <h3>You currently have this many cats: {props.score}</h3>
+      <h3>score: {`${props.score} ${props.score > 1 ? 'cats' : 'cat'}`} </h3>
       <CommentBoard
         score={props.score}
       />
