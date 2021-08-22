@@ -1,4 +1,4 @@
-import AutomateButton from "./AutomateButton"
+import AutomateButton from './AutomateButton'
 
 export default function AutoClicker (props) {
   return (

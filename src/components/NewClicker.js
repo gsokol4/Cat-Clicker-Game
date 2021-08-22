@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import '../paper.css'
-const timerStyle = {
-  color: 'red'
-}
-const notClickedStyle = {
-  color: 'black'
-}
+import './newClicker.css'
 
 export default function Clicker (props) {
   // timer = is the button in a delay after being clicked
   const [timer, setTimer] = useState(false)
   // counter = delay after buttton click
   const [counter, setCounter] = useState(props.counter)
-  // style = the style being applied to a current button
-  const [elStyle, setElStyle] = useState(notClickedStyle)
 
   // this is just a clock for the when timer is on
   const cooldown = () => {
@@ -41,36 +34,35 @@ export default function Clicker (props) {
 
     return counter
   }
-  // effect for when the counter changes
-  useEffect(() => {
-    const interval = setInterval(() => { handleCounter() }, 1000)
-    return () => {
-      clearInterval(interval)
-    }
-  }, [counter])
 
-  const changeStyle = () => {
-    timer ? setElStyle(timerStyle) : setElStyle(notClickedStyle)
-  }
-  const handleCounter = () => {
-    setCounter(counter - 1)
-    if (counter < 1) {
-      setTimer(false)
-      setCounter(props.counter)
-    }
-  }
   // this is what happens when you click the button
-  const functionCalled = timer ? () => {} : () => { handleClick() }
+  const functionCalled = timer ? () => { } : () => { handleClick() }
 
   function handleClick () {
     setTimer(true)
     props.handleClick()
   }
 
+  // effect for when the counter changes
+  useEffect(() => {
+    const handleCounter = () => {
+      setCounter(counter - 1)
+      if (counter < 1) {
+        setTimer(false)
+        setCounter(props.counter)
+      }
+    }
+
+    const interval = timer ? setInterval(() => { handleCounter() }, 1000) : setCounter(props.counter)
+    return () => {
+      clearInterval(interval)
+    }
+  }, [timer, props.counter, counter])
+
   return (
-    <div>
+    <div className={props.className}>
       <button
-        className={timer ? 'btn-danger' : 'btn-success-outline'}
+        className={(timer ? 'btn-danger' : 'btn-success-outline') + ' clickerButton'}
         onClick={() => { functionCalled() }}
       >
         {timer ? cooldown() : props.name} {` +${props.catsPerClick} `} {props.emoji}

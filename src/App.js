@@ -1,9 +1,8 @@
 import './App.css'
 import Game from './components/Game'
-import WindowWidth from './components/WindowWidth'
-import NewClicker from './components/NewClicker'
-import Background from './components/BackDrop'
+import StartMenu from './components/startMenu/StartMenu'
 import groupCat from './images/groupCat.jpg'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 const background = {
   backgroundImage: 'url(' + groupCat + ')',
@@ -15,9 +14,18 @@ const background = {
 }
 function App () {
   return (
-    <div style={background} className='App'>
-      <Game />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path='/'>
+          <StartMenu />
+        </Route>
+        <Route path='/game'>
+          <div style={background} className='App'>
+            <Game />
+          </div>
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
