@@ -7,7 +7,9 @@ export default function BackDrop (props) {
   }
   useEffect(() => {
     window.addEventListener('resize', handleInnerWidthChange)
-  })
+
+    return () => { console.log('event fired') }
+  }, [backDropWidth])
   const backdropStyle = {
     backgroundColor: 'black',
     opacity: 0.9,

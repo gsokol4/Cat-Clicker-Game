@@ -9,7 +9,7 @@ import AutoClicker from './auto/menu'
 import Ai from './ai/Ai'
 import emojies from '../images/emojies.js'
 import './game.css'
-export default function Game () {
+export default function Game (props) {
   const [state, changeState] = useState({
     score: 100000
   })
@@ -49,7 +49,7 @@ export default function Game () {
   return (
     <div>
       <BackDrop />
-      <ScoreBoard score={state.score} />
+      <ScoreBoard name={props.name} score={state.score} />
       <div className='clickerContainer'>
         <Clicker
           className='button1'
