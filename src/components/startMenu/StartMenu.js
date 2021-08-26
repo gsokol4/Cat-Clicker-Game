@@ -1,8 +1,15 @@
-import { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 function StartMenu (props) {
   const [toggleEditName, setToggleEditName] = useState(false)
+  const userNameInput = useRef(null)
+
+  async function selectUserNameInput () {
+    await setToggleEditName(true)
+    userNameInput.current.focus()
+  }
+
   return (
     <div
       style={{ backgroundColor: 'pink' }}
@@ -10,7 +17,7 @@ function StartMenu (props) {
       <label htmlFor='gamerTag'>Gamer Tag</label>
       {toggleEditName === false &&
         <>
-          <div onClick={() => setToggleEditName(true)}>
+          <div onClick={() => selectUserNameInput()}>
             {props.name}
           </div>
           <button
@@ -23,6 +30,8 @@ function StartMenu (props) {
         <>
           <input
             id='gamerTag'
+            value={props.name}
+            ref={userNameInput}
             onBlur={() => setToggleEditName(false)}
             onInput={(e) => {
               props.setName(e.target.value)
