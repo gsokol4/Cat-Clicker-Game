@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import SelectTimer from './SelectTimer.js'
 
 function StartMenu (props) {
   const [toggleEditName, setToggleEditName] = useState(false)
@@ -43,7 +44,7 @@ function StartMenu (props) {
       <Link to='/game' className='paper-btn'>Start Game</Link>
       <Link to='/' className='paper-btn'>Options</Link>
       <h6>{props.name}</h6>
-      <label> Select Match Time Limit </label>
+      <SelectTimer />
     </div>
   )
 }

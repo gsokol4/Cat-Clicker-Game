@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Game from './components/Game'
 import StartMenu from './components/startMenu/StartMenu'
 import groupCat from './images/groupCat.jpg'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import timerContext from './components/ContextComponents/timerContext.js/timerContext'
 
 const background = {
   backgroundImage: 'url(' + groupCat + ')',
@@ -13,7 +14,19 @@ const background = {
   zIndex: 1,
   color: 'white'
 }
+
 function App () {
+  const [timer, setTimer] = useState(180)
+
+  function handleTimer (time) {
+    if (typeof time !== 'number') {
+      console.error('handle timer can not be set to a non-number value check the input')
+      return
+    }
+    setTimer(time)
+  }
+  const timerObj = { timer: timer, setTimer: setTimer, handleTimer: handleTimer }
+
   function isLocalStorageSupported () {
     var storage = window.localStorage
     try {
@@ -26,10 +39,8 @@ function App () {
   }
   function checkLocalStorageNameVar () {
     if (localStorage.hasOwnProperty('catClickerUserName')) {
-      console.log('yayyy there is a name')
       return true
     } else {
-      console.log('wot no name found')
       return false
     }
   }
@@ -43,28 +54,29 @@ function App () {
   const randomNoun = nounList[randomArrSelector(nounList)]
   const randomName = () => `${randomAdj} ${randomNoun}`
   const [name, setName] = useState(isLocalStorageSupported() && checkLocalStorageNameVar() ? window.localStorage.getItem('catClickerUserName') : randomName)
-
-  console.log(window.localStorage)
-  checkLocalStorageNameVar()
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/'>
-          <StartMenu
-            name={name}
-            setName={setName}
-            randomName={randomName}
-          />
-        </Route>
-        <Route path='/game'>
-          <div style={background} className='App'>
-            <Game
+    <timerContext.Provider value={timerObj}>
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+
+            <StartMenu
               name={name}
+              setName={setName}
+              randomName={randomName}
             />
-          </div>
-        </Route>
-      </Switch>
-    </Router>
+
+          </Route>
+          <Route path='/game'>
+            <div style={background} className='App'>
+              <Game
+                name={name}
+              />
+            </div>
+          </Route>
+        </Switch>
+      </Router>
+    </timerContext.Provider>
   )
 }
 
