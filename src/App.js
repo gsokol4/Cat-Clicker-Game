@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './App.css'
-import Game from './components/Game'
+import Game from './components/game/Game'
 import StartMenu from './components/startMenu/StartMenu'
 import groupCat from './images/groupCat.jpg'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import timerContext from './components/ContextComponents/timerContext.js/timerContext'
+import './paper.css'
 
 const background = {
   backgroundImage: 'url(' + groupCat + ')',
