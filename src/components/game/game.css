@@ -37,7 +37,6 @@ button{
 }
 
 .clickerContainer{
-  background-color: pink;
   display: grid;
   grid-template-areas: '. button1 button2 button3 .'
                        '.  button4 button5 button6.'
@@ -51,7 +50,6 @@ button{
 
 
 .clickerContainer{
-  background-color: blanchedalmond;
   display: grid;
   grid-template-areas: '. button1 button2 button3 .'
   '.  button4 button5 button6.'

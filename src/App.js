@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Game from './components/game/Game'
 import StartMenu from './components/startMenu/StartMenu'
+import EndGameScreen from './components/endGameScreen/EndGame'
 import groupCat from './images/groupCat.jpg'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import timerContext from './components/ContextComponents/timerContext.js/timerContext'
+import './App.css'
 import './paper.css'
 
 const background = {
@@ -17,7 +18,7 @@ const background = {
 }
 
 function App () {
-  const [timer, setTimer] = useState(180)
+  const [timer, setTimer] = useState(5)
 
   function handleTimer (time) {
     if (typeof time !== 'number') {
@@ -46,7 +47,7 @@ function App () {
     }
   }
   const adjList = ['quick', 'fat', 'sneaky', 'smart', 'abrasive', 'ambiguous', 'deadly', 'determined', 'bawdy', 'cloistered', 'capricious', 'craven', 'dapper', 'debonair', 'divirgent', 'draconian', 'elated', 'erratic', 'fallacious', 'garrulous', 'great', 'greedy', 'incandescent', 'languid', 'macabre', 'twisted', 'green', 'blue', 'black', 'grey', 'pink']
-  const nounList = ['fox', 'cat', 'grandma', 'grandpa', 'dog', 'hound', 'chicken', 'chupacabra', 'lampost', 'rooster', 'wolf', 'vampire', 'bannana', 'peach', 'pear', 'apple', 'duck', 'driver', 'nurse', 'nutcase', 'elephant', 'rat', 'mouse', 'lion', 'kitty', 'kitten', 'cub', 'llama', 'mom', 'dad', 'sister', 'panda', 'sheep', 'tree', 'fern', 'lilly']
+  const nounList = ['fox', 'cat', 'grandma', 'grandpa', 'dog', 'hound', 'chicken', 'chupacabra', 'lampost', 'rooster', 'wolf', 'vampire', 'bannana', 'peach', 'pear', 'apple', 'duck', 'driver', 'nurse', 'nutcase', 'elephant', 'rat', 'mouse', 'lion', 'kitty', 'kitten', 'child', 'llama', 'mom', 'dad', 'sister', 'panda', 'sheep', 'tree', 'fern', 'lilly']
 
   const randomArrSelector = (arr) => {
     return Math.floor(Math.random() * arr.length)
@@ -70,9 +71,17 @@ function App () {
           </Route>
           <Route path='/game'>
             <div style={background} className='App'>
-              <Game
-                name={name}
-              />
+              {timerObj.timer > 0 &&
+                <>
+                  <Game
+                    name={name}
+                  />
+                </>}
+              {timerObj.timer < 1 &&
+                <>
+                  <EndGameScreen />
+                </>}
+
             </div>
           </Route>
         </Switch>

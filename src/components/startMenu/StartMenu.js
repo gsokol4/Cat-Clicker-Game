@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SelectTimer from './SelectTimer.js'
 
@@ -10,6 +10,16 @@ function StartMenu (props) {
     await setToggleEditName(true)
     userNameInput.current.focus()
   }
+  function resetTimer () {
+    console.log('timer reset')
+  }
+
+  useEffect(() => {
+    resetTimer()
+    return () => {
+
+    }
+  }, [])
 
   return (
     <div
