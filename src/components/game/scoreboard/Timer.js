@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import timer from '../../auxiliaryFunctions/clock'
-import timerContext from '../../ContextComponents/timerContext.js/timerContext'
+import timerContext from '../../context/timerContext'
 
 function Timer () {
   const timerObj = useContext(timerContext)

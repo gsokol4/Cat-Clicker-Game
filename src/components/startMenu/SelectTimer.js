@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import timerContext from '../ContextComponents/timerContext.js/timerContext'
+import timerContext from '../context/timerContext'
 
 export default function SelectTimer (props) {
   const timerObj = useContext(timerContext)

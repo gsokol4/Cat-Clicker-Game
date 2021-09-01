@@ -4,7 +4,7 @@ import Game from './components/game/Game'
 import StartMenu from './components/startMenu/StartMenu'
 import EndGameScreen from './components/endGameScreen/EndGame'
 import groupCat from './images/groupCat.jpg'
-import timerContext from './components/ContextComponents/timerContext.js/timerContext'
+import timerContext from './components/context/timerContext'
 import './App.css'
 import './paper.css'
 
@@ -56,6 +56,7 @@ function App () {
   const randomNoun = nounList[randomArrSelector(nounList)]
   const randomName = () => `${randomAdj} ${randomNoun}`
   const [name, setName] = useState(isLocalStorageSupported() && checkLocalStorageNameVar() ? window.localStorage.getItem('catClickerUserName') : randomName)
+
   return (
     <timerContext.Provider value={timerObj}>
       <Router>

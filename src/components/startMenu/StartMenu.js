@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import SelectTimer from './SelectTimer.js'
+import timerContext from '../context/timerContext.js'
 
 function StartMenu (props) {
   const [toggleEditName, setToggleEditName] = useState(false)
@@ -10,12 +11,30 @@ function StartMenu (props) {
     await setToggleEditName(true)
     userNameInput.current.focus()
   }
+  const timerObj = useContext(timerContext)
+
+  function checkLocalStorage () {
+    try {
+      console.log('tried it')
+      const timerSetting = window.localStorage.getItem('timerSetting')
+      timerObj.setTimer(timerSetting)
+    } catch {
+      console.log('could not access "timerSetting" in local storage using default')
+      timerObj.setTimer(3)
+    }
+  }
+
   function resetTimer () {
     console.log('timer reset')
   }
 
   useEffect(() => {
-    resetTimer()
+    if (timerObj.timer === 0) {
+      checkLocalStorage()
+    } else {
+      console.log('timer did not reset')
+    }
+
     return () => {
 
     }
