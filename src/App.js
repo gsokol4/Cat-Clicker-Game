@@ -18,7 +18,27 @@ const background = {
 }
 
 function App () {
-  const [timer, setTimer] = useState(5)
+  const [timer, setTimer] = useState(checkForTimerInLocalStorage() ? window.localStorage.getItem('timerSetting') : 5)
+
+  function checkForTimerInLocalStorage () {
+    if (checkForLocalStorage() === false) {
+      return false
+    }
+    const timer = window.localStorage.getItem('timerSetting')
+    if (typeof (timer) !== 'number') {
+      return false
+    } else {
+      return true
+    }
+  }
+
+  function checkForLocalStorage () {
+    if (typeof (Storage) !== 'undefined') {
+      return true
+    } else {
+      return false
+    }
+  }
 
   function handleTimer (time) {
     if (typeof time !== 'number') {
@@ -26,6 +46,8 @@ function App () {
       return
     }
     setTimer(time)
+    checkForLocalStorage() ? window.localStorage.setItem('timerSetting', time) : console.error('local storage is not supported')
+    console.log(window.localStorage)
   }
   const timerObj = { timer: timer, setTimer: setTimer, handleTimer: handleTimer }
 
@@ -40,7 +62,7 @@ function App () {
     }
   }
   function checkLocalStorageNameVar () {
-    if (localStorage.hasOwnProperty('catClickerUserName')) {
+    if (window.localStorage.hasOwnProperty('catClickerUserName')) {
       return true
     } else {
       return false
@@ -54,7 +76,13 @@ function App () {
   }
   const randomAdj = adjList[randomArrSelector(adjList)]
   const randomNoun = nounList[randomArrSelector(nounList)]
-  const randomName = () => `${randomAdj} ${randomNoun}`
+  const randomName = () => {
+    const random = `${randomAdj} ${randomNoun}`
+    if (checkLocalStorageNameVar()) {
+      window.localStorage.setItem('catClickerUserName', random)
+    }
+    return random
+  }
   const [name, setName] = useState(isLocalStorageSupported() && checkLocalStorageNameVar() ? window.localStorage.getItem('catClickerUserName') : randomName)
 
   return (

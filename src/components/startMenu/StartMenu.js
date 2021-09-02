@@ -13,24 +13,23 @@ function StartMenu (props) {
   }
   const timerObj = useContext(timerContext)
 
-  function checkLocalStorage () {
+  function resetTimerToLocalStorage () {
     try {
-      console.log('tried it')
       const timerSetting = window.localStorage.getItem('timerSetting')
+      console.log(timerSetting)
+      if (timerSetting === null || undefined) {
+        throw new Error('there is no defined timerSetting in local storage')
+      }
       timerObj.setTimer(timerSetting)
     } catch {
       console.log('could not access "timerSetting" in local storage using default')
-      timerObj.setTimer(3)
+      timerObj.setTimer(180)
     }
-  }
-
-  function resetTimer () {
-    console.log('timer reset')
   }
 
   useEffect(() => {
     if (timerObj.timer === 0) {
-      checkLocalStorage()
+      resetTimerToLocalStorage()
     } else {
       console.log('timer did not reset')
     }

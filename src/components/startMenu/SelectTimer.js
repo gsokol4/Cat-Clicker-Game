@@ -12,6 +12,18 @@ export default function SelectTimer (props) {
           <input
             type='radio'
             name='react-tips'
+            value='5 min'
+            className='form-check-input'
+            onClick={() => timerObj.handleTimer(5)}
+          />
+          5 sec
+        </label>
+      </div>
+      <div className='form-check'>
+        <label>
+          <input
+            type='radio'
+            name='react-tips'
             value='two minutes'
             className='form-check-input'
             onClick={() => timerObj.handleTimer(120)}
