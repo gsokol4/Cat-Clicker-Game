@@ -18,13 +18,13 @@ const background = {
 }
 
 function App () {
-  const [timer, setTimer] = useState(checkForTimerInLocalStorage() ? window.localStorage.getItem('timerSetting') : 5)
+  const [timer, setTimer] = useState(checkForTimerInLocalStorage() ? window.localStorage.getItem('timerSetting') : 100)
 
   function checkForTimerInLocalStorage () {
     if (checkForLocalStorage() === false) {
       return false
     }
-    const timer = window.localStorage.getItem('timerSetting')
+    const timer = Number(window.localStorage.getItem('timerSetting'))
     if (typeof (timer) !== 'number') {
       return false
     } else {
