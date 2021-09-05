@@ -11,6 +11,7 @@ export default function AutoClicker (props) {
         reduceCats={props.reduceCats}
         kittensPerSecond={1}
         keyName='delivery'
+        changeState={props.changeState}
       />
       <AutomateButton
         name='breeding program'
@@ -19,6 +20,7 @@ export default function AutoClicker (props) {
         reduceCats={props.reduceCats}
         kittensPerSecond={5}
         keyName='breedingProgram'
+        changeState={props.changeState}
       />
     </>
   )

@@ -39,9 +39,6 @@ export default function Game (props) {
           }
         )
       )
-      setInterval(() => {
-        changeState((prevState) => ({ score: prevState.score + amountToAdd }))
-      }, 1000)
     }
   }
 
@@ -127,6 +124,7 @@ export default function Game (props) {
         cats={state}
         reduceCats={(num, num2, state, stateKey) => reduceCats(num, num2, state, stateKey)}
         costOfAutomation={autoCatDelivery}
+        changeState={changeState}
       />
       <Ai />
     </div>
