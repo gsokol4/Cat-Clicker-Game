@@ -28,12 +28,7 @@ function StartMenu (props) {
   }
 
   useEffect(() => {
-    if (timerObj.timer === 0) {
-      resetTimerToLocalStorage()
-    } else {
-      console.log('timer did not reset')
-    }
-
+    resetTimerToLocalStorage()
     return () => {
 
     }

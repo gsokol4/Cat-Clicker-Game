@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
+const intervals = []
 export default function AutomateButton (props) {
-  const intervals = []
   function handleClick () {
     props.reduceCats(props.costOfAutomation, props.kittensPerSecond, props.keyName)
 
@@ -9,11 +9,12 @@ export default function AutomateButton (props) {
       props.changeState((prevState) => ({ score: prevState.score + props.kittensPerSecond }))
     }, 1000)
     intervals.push(autoClicker)
-    console.log(autoClicker)
   }
   useEffect(() => {
     return () => {
-      console.log('clean up ran')
+      intervals.forEach(
+        (node, index) => { clearInterval(intervals[index]) }
+      )
     }
   }, [])
 

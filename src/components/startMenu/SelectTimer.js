@@ -3,6 +3,7 @@ import timerContext from '../context/timerContext'
 
 export default function SelectTimer (props) {
   const timerObj = useContext(timerContext)
+
   return (
     <>
       <h4>{timerObj.timer}</h4>
