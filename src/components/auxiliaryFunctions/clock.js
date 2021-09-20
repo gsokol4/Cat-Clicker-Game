@@ -1,11 +1,11 @@
 // this is just a clock for the when timer is on
 const cooldown = function (counter) {
-  let sec
-  let min
-  let hour
-  let addZero
-  let addZeroMin
-  let addZeroHour
+  if (counter < 0) {
+    throw RangeError('invalid input recieved, input needs to be a number that is 0 or greater', 'clock.js')
+  }
+
+  let sec, min, hour, addZero, addZeroMin, addZeroHour
+
   addZero = (counter % 60 < 10 || counter) < 10 ? '0' : ''
   addZeroMin = (Math.floor((counter / 60) % 60)) < 10 ? '0' : ''
   addZeroHour = (Math.floor((counter / 60) / 60 % 60)) < 10 ? '0' : ''

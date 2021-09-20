@@ -3,7 +3,7 @@ import CommentBoard from '../commentBoard/CommentBoard'
 import Timer from './Timer'
 export default function ScoreBoard (props) {
   return (
-    <div>
+    <div data-testId='ScoreBoard'>
       <Timer />
       {props.score < 10 &&
         <>

@@ -85,6 +85,43 @@ function App () {
   }
   const [name, setName] = useState(isLocalStorageSupported() && checkLocalStorageNameVar() ? window.localStorage.getItem('catClickerUserName') : randomName)
 
+  // points section
+
+  const [state, changeState] = useState({
+    score: 0
+  })
+
+  const [autoCatDelivery, setAutoCatDelivery] = useState({ delivery: 100, breedingProgram: 500 })
+
+  function handleAddCat (value) {
+    return changeState((prevState) => ({ score: prevState.score + value }))
+  }
+
+  function reduceCats (numToSubtract, amountToAdd, stateName) {
+    if (state.score < numToSubtract) {
+    } else {
+      if (typeof (numToSubtract) !== 'number') {
+        console.log(numToSubtract)
+        console.log(typeof (numToSubtract))
+        throw new Error('invalid input for first parameter in the reduceCats function ')
+      }
+      if (typeof (amountToAdd) !== 'number') {
+        console.error('"amountToAdd" (second parameter) in reduceCats has been set to a default value')
+        amountToAdd = 1
+      }
+      changeState((prevState) => ({ score: prevState.score - numToSubtract }))
+      setAutoCatDelivery(
+        (prevCats) => (
+          {
+            ...autoCatDelivery, [stateName]: (Math.round(numToSubtract * 1.3))
+          }
+        )
+      )
+    }
+  }
+  // ai score
+  const [aiScore, setAiScore] = useState({ score: 0, AiClickRate: 1 })
+
   return (
     <timerContext.Provider value={timerObj}>
       <Router>
@@ -104,11 +141,25 @@ function App () {
                 <>
                   <Game
                     name={name}
+                    state={state}
+                    handleAddCat={(num) => handleAddCat(num)}
+                    changeState={(num) => changeState(num)}
+                    autoCatDelivery={autoCatDelivery}
+                    reduceCats={
+                      (numToSubtract, amountToAdd, stateName) => {
+                        return reduceCats(numToSubtract, amountToAdd, stateName)
+                      }
+                    }
+                    aiScore={aiScore}
+                    setAiScore={(obj) => setAiScore(obj)}
                   />
                 </>}
               {timerObj.timer < 1 &&
                 <>
-                  <EndGameScreen />
+                  <EndGameScreen
+                    state={state}
+                    aiScore={aiScore}
+                  />
                 </>}
 
             </div>

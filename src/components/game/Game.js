@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Clicker from './Clicker.js'
 import ScoreBoard from './scoreboard/ScoreBoard'
 import NewClicker from './NewClicker.js'
@@ -8,44 +7,14 @@ import Ai from './ai/Ai'
 import emojies from '../../images/emojies.js'
 import './game.css'
 
-export default function Game (props) {
-  const [state, changeState] = useState({
-    score: 100000
-  })
-
-  const [autoCatDelivery, setAutoCatDelivery] = useState({ delivery: 100, breedingProgram: 500 })
-
-  function handleAddCat (value) {
-    return changeState((prevState) => ({ score: prevState.score + value }))
-  }
-
-  function reduceCats (numToSubtract, amountToAdd, stateName) {
-    if (state.score < numToSubtract) {
-    } else {
-      if (typeof (numToSubtract) !== 'number') {
-        console.log(numToSubtract)
-        console.log(typeof (numToSubtract))
-        throw new Error('invalid input for first parameter in the reduceCats function ')
-      }
-      if (typeof (amountToAdd) !== 'number') {
-        console.error('"amountToAdd" (second parameter) in reduceCats has been set to a default value')
-        amountToAdd = 1
-      }
-      changeState((prevState) => ({ score: prevState.score - numToSubtract }))
-      setAutoCatDelivery(
-        (prevCats) => (
-          {
-            ...autoCatDelivery, [stateName]: (Math.round(numToSubtract * 1.3))
-          }
-        )
-      )
-    }
-  }
-
+export default function Game (
+  // destructuring props
+  { state, name, handleAddCat, changeState, autoCatDelivery, reduceCats, aiScore, setAiScore }
+) {
   return (
     <div>
       <BackDrop />
-      <ScoreBoard name={props.name} score={state.score} />
+      <ScoreBoard name={name} score={state.score} />
       <div className='clickerContainer'>
         <Clicker
           className='button1'
@@ -126,7 +95,10 @@ export default function Game (props) {
         costOfAutomation={autoCatDelivery}
         changeState={changeState}
       />
-      <Ai />
+      <Ai
+        aiScore={aiScore}
+        setAiScore={setAiScore}
+      />
     </div>
   )
 }
