@@ -1,26 +1,79 @@
-import { Link } from "react-router-dom"
-import {useState} from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import SelectTimer from './SelectTimer.js'
+import timerContext from '../context/timerContext.js'
 
-function StartMenu () {
-  let adjList = ['quick', 'fat', 'sneaky', 'smart', 'abrasive', 'ambiguous', 'deadly', 'determined', 'bawdy', 'cloistered', 'capricious', 'craven', 'dapper', 'debonair','divirgent', 'draconian', 'elated', 'erratic', 'fallacious', 'garrulous', 'great', 'greedy', 'incandescent', 'languid', 'macabre', 'twisted', 'green', 'blue', 'black', 'grey', 'pink', ]
-  let nounList = ['fox', 'cat', 'grandma', 'grandpa', 'dog', 'hound', 'chicken', 'chupacabra', 'lampost', 'rooster', 'wolf', 'vampire', 'bannana', 'peach', 'pear', 'apple', 'duck', 'driver', 'nurse', 'nutcase', 'elephant', 'rat', 'mouse', 'lion', 'kitty', 'kitten', 'cub', 'llama', 'mom', 'dad', 'sister', 'panda', 'sheep', 'tree', 'fern', 'lilly']
+function StartMenu (props) {
+  // reset score and aiScore to 0 upon retuning to the main menu
+  useEffect(() => {
+    props.changeState({ score: 0 })
+    props.setAiScore({ score: 0, AiClickRate: 1 })
+  }, [])
 
-  const randomArrSelector = (arr) => {
-    return Math.floor(Math.random() * arr.length)
+  const [toggleEditName, setToggleEditName] = useState(false)
+  const userNameInput = useRef(null)
+
+  async function selectUserNameInput () {
+    await setToggleEditName(true)
+    userNameInput.current.focus()
   }
-  const randomAdj = adjList[randomArrSelector(adjList)]
-  const randomNoun = nounList[randomArrSelector(nounList)]
-  const randomName = `${randomAdj} ${randomNoun}`
-  const [name, setName] = useState(randomName)
+  const timerObj = useContext(timerContext)
+
+  function resetTimerToLocalStorage () {
+    try {
+      const timerSetting = window.localStorage.getItem('timerSetting')
+      if (timerSetting === null || undefined) {
+        throw new Error('there is no defined timerSetting in local storage')
+      }
+      timerObj.setTimer(timerSetting)
+    } catch {
+      console.log('could not access "timerSetting" in local storage using default')
+      timerObj.setTimer(180)
+    }
+  }
+
+  useEffect(() => {
+    resetTimerToLocalStorage()
+    return () => {
+
+    }
+  }, [])
 
   return (
-    <>
+    <div
+      style={{ backgroundColor: 'pink' }}
+    >
       <label htmlFor='gamerTag'>Gamer Tag</label>
-      <input id='gamerTag' placeholder={name} onChange={(e) => setName(e.target.value)} />
+      {toggleEditName === false &&
+        <>
+          <div onClick={() => selectUserNameInput()}>
+            {props.name}
+          </div>
+          <button
+            onClick={() => props.setName(props.randomName)}
+          >
+            random username
+          </button>
+        </>}
+      {toggleEditName === true &&
+        <>
+          <input
+            id='gamerTag'
+            value={props.name}
+            ref={userNameInput}
+            onBlur={() => setToggleEditName(false)}
+            onInput={(e) => {
+              props.setName(e.target.value)
+              window.localStorage.setItem('catClickerUserName', e.target.value)
+            }}
+          />
+          <button onClick={() => setToggleEditName(false)}>submit</button>
+        </>}
       <Link to='/game' className='paper-btn'>Start Game</Link>
       <Link to='/' className='paper-btn'>Options</Link>
-      <h6>{name}</h6>
-    </>
+      <h6>{props.name}</h6>
+      <SelectTimer />
+    </div>
   )
 }
 export default StartMenu

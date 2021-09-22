@@ -1,0 +1,16 @@
+.endGameWrapper{
+  background-color: black;
+  opacity: .85;
+  width: 50%;
+  margin: auto;
+  position: relative;
+  top: 15%;
+}
+
+.endGamePlayerScore{
+  font-size: 2rem;
+}
+
+.endGameAiScore{
+  font-size: 2rem;
+}

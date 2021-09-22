@@ -7,9 +7,7 @@ function playerName (arr) {
 }
 const randomName = playerName(names)
 
-export default function Ai () {
-  const [aiScore, setAiScore] = useState({ score: 0, AiClickRate: 1 })
-
+export default function Ai ({ setAiScore, aiScore }) {
   function handleAiScore (prev) {
     setAiScore((prev) => ({ score: (prev.score + prev.AiClickRate), AiClickRate: prev.AiClickRate }))
   }
