@@ -1,12 +1,11 @@
-import Ai from "../../game/ai/Ai";
+import './Win.css'
 
 export default function Win () {
   return (
     <>
-      <h3>
+      <h1 className='endGameWin article'>
         You Win
-      </h3>
-      <h6>Your Score: {}</h6>
+      </h1>
     </>
   )
 }

@@ -15,7 +15,7 @@ export default function SelectTimer (props) {
             name='react-tips'
             value='5 min'
             className='form-check-input'
-            onClick={() => timerObj.handleTimer(5)}
+            onClick={() => timerObj.handleTimer(0)}
           />
           5 sec
         </label>

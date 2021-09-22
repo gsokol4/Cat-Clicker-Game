@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Game from './components/game/Game'
 import StartMenu from './components/startMenu/StartMenu'
@@ -47,7 +47,6 @@ function App () {
     }
     setTimer(time)
     checkForLocalStorage() ? window.localStorage.setItem('timerSetting', time) : console.error('local storage is not supported')
-    console.log(window.localStorage)
   }
   const timerObj = { timer: timer, setTimer: setTimer, handleTimer: handleTimer }
 
@@ -132,6 +131,9 @@ function App () {
               name={name}
               setName={setName}
               randomName={randomName}
+              score={state.score}
+              changeState={(scoreObj) => changeState(scoreObj)}
+              setAiScore={(aiObj) => setAiScore(aiObj)}
             />
 
           </Route>

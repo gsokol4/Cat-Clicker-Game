@@ -4,6 +4,12 @@ import SelectTimer from './SelectTimer.js'
 import timerContext from '../context/timerContext.js'
 
 function StartMenu (props) {
+  // reset score and aiScore to 0 upon retuning to the main menu
+  useEffect(() => {
+    props.changeState({ score: 0 })
+    props.setAiScore({ score: 0, AiClickRate: 1 })
+  }, [])
+
   const [toggleEditName, setToggleEditName] = useState(false)
   const userNameInput = useRef(null)
 
@@ -16,7 +22,6 @@ function StartMenu (props) {
   function resetTimerToLocalStorage () {
     try {
       const timerSetting = window.localStorage.getItem('timerSetting')
-      console.log(timerSetting)
       if (timerSetting === null || undefined) {
         throw new Error('there is no defined timerSetting in local storage')
       }
