@@ -61,6 +61,7 @@ export default function Clicker (props) {
   return (
     <div className={props.className}>
       <button
+        style={props.style}
         className={(timer ? 'btn-danger' : 'btn-success-outline') + ' clickerButton'}
         onClick={() => { functionCalled() }}
       >

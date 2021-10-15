@@ -87,7 +87,16 @@ export default function Game (
           name='Found a cat city'
           emoji={emojies.cat + emojies.city}
         />}
-        <button className='clickerButton button9 paper-btn'>Automation Menu {emojies.robot}</button>
+        {state.score > 10000 && <NewClicker
+          style={{ fontSize: '.8em' }}
+          className='button9'
+          cats={state}
+          counter={20}
+          handleClick={() => handleAddCat(10000)}
+          catsPerClick={10000}
+          name='interdimensional cat portal'
+          emoji={emojies.cat + emojies.portal}
+        />}
       </div>
       <AutoClicker
         cats={state}

@@ -87,7 +87,7 @@ function App () {
   // points section
 
   const [state, changeState] = useState({
-    score: 0
+    score: 100000
   })
 
   const [autoCatDelivery, setAutoCatDelivery] = useState({ delivery: 100, breedingProgram: 500 })
