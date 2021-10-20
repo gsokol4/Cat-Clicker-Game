@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import SelectTimer from './SelectTimer.js'
 import timerContext from '../context/timerContext.js'
+import GameDescription from './GameDescription.js'
+import './startMenu.css'
 
 function StartMenu (props) {
   // reset score and aiScore to 0 upon retuning to the main menu
@@ -41,15 +43,17 @@ function StartMenu (props) {
 
   return (
     <div
-      style={{ backgroundColor: 'pink' }}
+      className='body'
     >
-      <label htmlFor='gamerTag'>Gamer Tag</label>
+      <GameDescription />
+      <label className='gamerTagTitle' htmlFor='gamerTag'>User Name:</label>
       {toggleEditName === false &&
         <>
-          <div onClick={() => selectUserNameInput()}>
+          <div className='userName' onClick={() => selectUserNameInput()}>
             {props.name}
           </div>
           <button
+            className='randUserName'
             onClick={() => props.setName(props.randomName)}
           >
             random username
@@ -58,6 +62,7 @@ function StartMenu (props) {
       {toggleEditName === true &&
         <>
           <input
+            className='input'
             id='gamerTag'
             value={props.name}
             ref={userNameInput}
@@ -67,10 +72,9 @@ function StartMenu (props) {
               window.localStorage.setItem('catClickerUserName', e.target.value)
             }}
           />
-          <button onClick={() => setToggleEditName(false)}>submit</button>
+          <button className='randUserName' onClick={() => setToggleEditName(false)}>submit</button>
         </>}
-      <Link to='/game' className='paper-btn'>Start Game</Link>
-      <Link to='/' className='paper-btn'>Options</Link>
+      <Link to='/game' className='start paper-btn'>Start Game</Link>
       <h6>{props.name}</h6>
       <SelectTimer />
     </div>

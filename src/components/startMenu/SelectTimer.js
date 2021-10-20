@@ -8,53 +8,55 @@ export default function SelectTimer (props) {
     <>
       <h4>{timerObj.timer}</h4>
       <label> Select Match Time Limit </label>
-      <div className='form-check'>
-        <label>
-          <input
-            type='radio'
-            name='react-tips'
-            value='5 min'
-            className='form-check-input'
-            onClick={() => timerObj.handleTimer(0)}
-          />
+      <div className='options'>
+        <div className='form-check'>
+          <label>
+            <input
+              type='radio'
+              name='react-tips'
+              value='5 min'
+              className='form-check-input'
+              onClick={() => timerObj.handleTimer(0)}
+            />
           5 sec
-        </label>
-      </div>
-      <div className='form-check'>
-        <label>
-          <input
-            type='radio'
-            name='react-tips'
-            value='two minutes'
-            className='form-check-input'
-            onClick={() => timerObj.handleTimer(120)}
-          />
+          </label>
+        </div>
+        <div className='form-check'>
+          <label>
+            <input
+              type='radio'
+              name='react-tips'
+              value='two minutes'
+              className='form-check-input'
+              onClick={() => timerObj.handleTimer(120)}
+            />
           2:00
-        </label>
-      </div>
-      <div className='form-check'>
-        <label>
-          <input
-            type='radio'
-            name='react-tips'
-            value='three minutes'
-            className='form-check-input'
-            onClick={() => timerObj.handleTimer(180)}
-          />
+          </label>
+        </div>
+        <div className='form-check'>
+          <label>
+            <input
+              type='radio'
+              name='react-tips'
+              value='three minutes'
+              className='form-check-input'
+              onClick={() => timerObj.handleTimer(180)}
+            />
           3:00
-        </label>
-      </div>
-      <div className='form-check'>
-        <label>
-          <input
-            type='radio'
-            name='react-tips'
-            value='four minutes'
-            className='form-check-input'
-            onClick={() => timerObj.handleTimer(240)}
-          />
+          </label>
+        </div>
+        <div className='form-check'>
+          <label>
+            <input
+              type='radio'
+              name='react-tips'
+              value='four minutes'
+              className='form-check-input'
+              onClick={() => timerObj.handleTimer(240)}
+            />
           4:00
-        </label>
+          </label>
+        </div>
         <div className='form-check'>
           <label>
             <input
