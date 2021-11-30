@@ -258,14 +258,15 @@ pre {
 
 a {
   background-color: transparent;
-  -webkit-text-decoration-skip: objects;
+  -webkit-text-decoration-skip: none; /* changed from underline objects */
+  text-decoration-line: none;
 }
 
 abbr[title] {
   border-bottom: none;
-  text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: none; /* changed from underline */
+  -webkit-text-decoration: none; /* changed from underline dotted */
+          text-decoration: none; /* changed from underline dotted */
 }
 
 b,
@@ -1598,7 +1599,7 @@ ul.breadcrumb li a {
   text-decoration: none;
 }
 ul.breadcrumb li a:hover {
-  text-decoration: underline;
+  text-decoration: none; /* changed from underline */
 }
 ul.breadcrumb li + li::before {
   content: "/ ";
@@ -3303,3 +3304,42 @@ nav .collapsible > label {
     display: block;
   }
 }
+
+ /* gabriel's styles */
+
+@media only screen and (max-width: 600px), (max-height: 400px) {
+   h3{
+    font-size: 1.2em;
+    margin-bottom: 10px;
+   }
+   h4{
+    font-size: .9em;
+    margin-bottom: 8px;
+   }
+   p{
+     font-size: .7em;
+     margin-bottom: 8px;
+   }
+   .start{
+     width: 100px;
+     height: 30px;
+     font-size: .7em;
+     padding-bottom: 30px;
+     margin: 0;
+   }
+   .gamerTagTitle{
+     margin-top: 0;
+     font-size: .7rem;
+   }
+   .userName{
+     font-size: .9em;
+   }
+   label{
+     font-size: .7em;
+   }
+   div.options{
+     display: flex;
+     flex-direction: row;
+     font-size: .7em;
+   }
+ }

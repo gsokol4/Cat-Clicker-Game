@@ -1,0 +1,7 @@
+.f{
+  border-style: none;
+  width: 40px;
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+}

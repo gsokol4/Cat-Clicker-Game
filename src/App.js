@@ -9,9 +9,6 @@ import './App.css'
 import './paper.css'
 
 const background = {
-  backgroundImage: 'url(' + groupCat + ')',
-  height: window.screen.height,
-  backgroundSize: 'cover',
   position: 'relative',
   zIndex: 1,
   color: 'white'
