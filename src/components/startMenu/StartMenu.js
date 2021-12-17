@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import SelectTimer from './SelectTimer.js'
 import timerContext from '../context/timerContext.js'
+import GameDescription from './GameDescription.js'
+import MovingImg from './KittyGenerator'
+import './startMenu.css'
 
 function StartMenu (props) {
   // reset score and aiScore to 0 upon retuning to the main menu
@@ -40,39 +43,52 @@ function StartMenu (props) {
   }, [])
 
   return (
-    <div
-      style={{ backgroundColor: 'pink' }}
-    >
-      <label htmlFor='gamerTag'>Gamer Tag</label>
-      {toggleEditName === false &&
-        <>
-          <div onClick={() => selectUserNameInput()}>
-            {props.name}
-          </div>
-          <button
-            onClick={() => props.setName(props.randomName)}
-          >
-            random username
+    <div className='page'>
+      <div
+        className='body'
+      >
+        <GameDescription />
+        <Link to='/game' className='text-link'>
+          <button className='paper-btn start'>
+            Start Game
           </button>
-        </>}
-      {toggleEditName === true &&
-        <>
-          <input
-            id='gamerTag'
-            value={props.name}
-            ref={userNameInput}
-            onBlur={() => setToggleEditName(false)}
-            onInput={(e) => {
-              props.setName(e.target.value)
-              window.localStorage.setItem('catClickerUserName', e.target.value)
-            }}
-          />
-          <button onClick={() => setToggleEditName(false)}>submit</button>
-        </>}
-      <Link to='/game' className='paper-btn'>Start Game</Link>
-      <Link to='/' className='paper-btn'>Options</Link>
-      <h6>{props.name}</h6>
-      <SelectTimer />
+        </Link>
+        <label className='gamerTagTitle' htmlFor='gamerTag'>User Name:</label>
+        {toggleEditName === false &&
+          <>
+            <div className='userName' onClick={() => selectUserNameInput()}>
+              {props.name}
+            </div>
+            <button
+              className='randUserName'
+              onClick={() => props.setName(props.randomName)}
+            >
+              random username
+            </button>
+          </>}
+        {toggleEditName === true &&
+          <>
+            <input
+              className='input'
+              id='gamerTag'
+              value={props.name}
+              ref={userNameInput}
+              onBlur={() => setToggleEditName(false)}
+              onInput={(e) => {
+                props.setName(e.target.value)
+                window.localStorage.setItem('catClickerUserName', e.target.value)
+              }}
+            />
+            <button className='randUserName' onClick={() => setToggleEditName(false)}>submit</button>
+          </>}
+        <SelectTimer />
+      </div>
+      <MovingImg />
+      <footer className='endGameFooter'>
+        <p>Thank you for trying out my game :) for other samples of my work and to find out more about me as
+        a developer please visit </p>
+        <a className='footerLink' href='https://gabrielsokol.com'>my portfolio website</a>.
+      </footer>
     </div>
   )
 }

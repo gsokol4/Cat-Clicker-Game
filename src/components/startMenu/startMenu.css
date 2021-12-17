@@ -1,0 +1,75 @@
+html{
+  line-height: 1;
+}
+div{
+  margin: 0;
+}
+.page{
+  position: relative;
+  z-index: 1;
+  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url("../../images/crupledPaper.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 20px;
+}
+.footer{
+  justify-content: center;
+}
+.body{
+  color: rgb(26, 25, 25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.options{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 10px 30px;
+  margin: 10px;
+}
+
+.gamerTagTitle{
+  margin-top: 0px;
+}
+
+.userName{
+  margin-bottom: 10px;
+  margin-top: 8px;
+  font-size: 1.2rem;
+}
+
+.input{
+  font-size: 1.2rem;
+}
+
+
+.start{
+  height: 70px;
+  width: 150px;
+}
+
+
+.text-link {
+  background-image: none;
+  margin: 15px;
+}
+
+
+.randUserName{
+  height: 0px;
+  font-size: .5rem;
+  text-align: center;
+  display:table-cell;
+  vertical-align:middle;
+  padding-bottom: 25px;
+}
