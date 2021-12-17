@@ -1696,7 +1696,7 @@ button.disabled, button[disabled],
 a {
   color: #41403e;
   color: var(--secondary);
-  background-image: linear-gradient(5deg, transparent 65%, #0071de 80%, transparent 90%), linear-gradient(165deg, transparent 5%, #0071de 15%, transparent 25%), linear-gradient(165deg, transparent 45%, #0071de 55%, transparent 65%), linear-gradient(15deg, transparent 25%, #0071de 35%, transparent 50%);
+  background-image: none;
   background-position: 0 90%;
   background-repeat: repeat-x;
   background-size: 4px 3px;
@@ -2475,7 +2475,7 @@ fieldset.form-group {
 }
 .modal .modal-link,
 .modal a {
-  background-image: linear-gradient(5deg, transparent 65%, #0071de 80%, transparent 90%), linear-gradient(165deg, transparent 5%, #0071de 15%, transparent 25%), linear-gradient(165deg, transparent 45%, #0071de 55%, transparent 65%), linear-gradient(15deg, transparent 25%, #0071de 35%, transparent 50%);
+  background-image: none;
   background-position: 0 90%;
   background-repeat: repeat-x;
   background-size: 4px 3px;
@@ -3340,6 +3340,9 @@ nav .collapsible > label {
    div.options{
      display: flex;
      flex-direction: row;
+     font-size: .7em;
+   }
+   .footer{
      font-size: .7em;
    }
  }

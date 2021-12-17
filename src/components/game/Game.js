@@ -89,7 +89,6 @@ export default function Game (
             emoji={emojies.cat + emojies.city}
           />}
           {state.score > 10000 && <NewClicker
-            style={{ fontSize: '.8em' }}
             className='button9'
             cats={state}
             counter={20}

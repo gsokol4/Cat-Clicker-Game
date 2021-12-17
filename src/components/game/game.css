@@ -45,6 +45,7 @@ button{
 }
 .button9{
   grid-area: button9;
+  font-size: .85em;
 }
 .linkToAutomation{
   height: 60px;

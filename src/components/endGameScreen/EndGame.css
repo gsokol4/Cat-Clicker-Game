@@ -6,6 +6,14 @@
   top: 15%;
 }
 
+.endGameFooter{
+  color: black;
+  font-size: .7em;
+}
+.footerLink{
+  color: pink;
+  text-decoration: underline;
+}
 .endGamePlayerScore{
   font-size: 1.7rem;
 }
