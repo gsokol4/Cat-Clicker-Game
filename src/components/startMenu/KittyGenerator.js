@@ -31,7 +31,6 @@ export default function MakeCat () {
         className='f'
         style={currentPosition}
       />
-      <p>{position.width}</p>
     </>
   )
 }

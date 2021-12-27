@@ -1,0 +1,57 @@
+.vsBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.scoreContainer{
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+}
+.player{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    background-color: royalblue;
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+.opponent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    background-color: red;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    height: 150px;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+.playerName{
+    display: block;
+    text-overflow: ellipsis;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 600px), (max-height: 400px) {
+    .player{
+        width: 125px;
+        height: 75px;
+    }
+    .opponent{
+        width: 125px;
+        height: 75px;
+    }
+}

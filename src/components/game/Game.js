@@ -15,7 +15,11 @@ export default function Game (
     <div className='gamePage'>
       <div className='gameBody'>
         <BackDrop />
-        <ScoreBoard name={name} score={state.score} />
+        <ScoreBoard 
+          name={name} 
+          score={state.score} 
+          aiScore={aiScore}
+          setAiScore={setAiScore} />
         <div className='clickerContainer'>
           <Clicker
             className='button1'
@@ -103,10 +107,6 @@ export default function Game (
           reduceCats={(num, num2, state, stateKey) => reduceCats(num, num2, state, stateKey)}
           costOfAutomation={autoCatDelivery}
           changeState={changeState}
-        />
-        <Ai
-          aiScore={aiScore}
-          setAiScore={setAiScore}
         />
       </div>
     </div>

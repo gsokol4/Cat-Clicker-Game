@@ -7,7 +7,6 @@ div{
 .page{
   position: relative;
   z-index: 1;
-  
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -19,8 +18,13 @@ div{
   overflow: hidden;
   padding: 20px;
 }
-.footer{
+.endGameFooter{
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
   justify-content: center;
+  align-items: center;
+  background-color: pink;
 }
 .body{
   color: rgb(26, 25, 25);
@@ -28,6 +32,7 @@ div{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
 }
 
 .options{
@@ -73,3 +78,4 @@ div{
   vertical-align:middle;
   padding-bottom: 25px;
 }
+

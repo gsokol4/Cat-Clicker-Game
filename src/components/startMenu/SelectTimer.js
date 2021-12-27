@@ -17,9 +17,9 @@ export default function SelectTimer (props) {
               name='react-tips'
               value='5 min'
               className='form-check-input'
-              onClick={() => timerObj.handleTimer(0)}
+              onClick={() => timerObj.handleTimer(60)}
             />
-          5 sec
+          1 min
           </label>
         </div>
         <div className='form-check'>
@@ -31,7 +31,7 @@ export default function SelectTimer (props) {
               className='form-check-input'
               onClick={() => timerObj.handleTimer(120)}
             />
-          2:00
+          2 min
           </label>
         </div>
         <div className='form-check'>
@@ -43,7 +43,7 @@ export default function SelectTimer (props) {
               className='form-check-input'
               onClick={() => timerObj.handleTimer(180)}
             />
-          3:00
+          3 min
           </label>
         </div>
         <div className='form-check'>
@@ -55,7 +55,7 @@ export default function SelectTimer (props) {
               className='form-check-input'
               onClick={() => timerObj.handleTimer(240)}
             />
-          4:00
+          4 min
           </label>
         </div>
         <div className='form-check'>
@@ -67,7 +67,7 @@ export default function SelectTimer (props) {
               className='form-check-input'
               onClick={() => timerObj.handleTimer(300)}
             />
-            5:00
+            5 min
           </label>
         </div>
       </div>

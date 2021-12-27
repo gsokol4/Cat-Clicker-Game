@@ -41,7 +41,9 @@
     "@testing-library/react": "^11.2.7"
   },
   "standard": {
-    "globals": [ "test", "expect" ]
+    "globals": [
+      "test",
+      "expect"
+    ]
   }
-  
 }
