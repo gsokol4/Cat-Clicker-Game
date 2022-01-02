@@ -21,10 +21,12 @@ div{
 .endGameFooter{
   display: flex;
   flex-direction: column;
-  max-width: 400px;
   justify-content: center;
   align-items: center;
-  background-color: pink;
+}
+.footerText{
+  max-width: 390px; 
+  text-align: center;
 }
 .body{
   color: rgb(26, 25, 25);
