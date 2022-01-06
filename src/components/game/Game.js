@@ -15,11 +15,12 @@ export default function Game (
     <div className='gamePage'>
       <div className='gameBody'>
         <BackDrop />
-        <ScoreBoard 
-          name={name} 
-          score={state.score} 
+        <ScoreBoard
+          name={name}
+          score={state.score}
           aiScore={aiScore}
-          setAiScore={setAiScore} />
+          setAiScore={setAiScore}
+        />
         <div className='clickerContainer'>
           <Clicker
             className='button1'

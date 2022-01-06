@@ -8,16 +8,16 @@ export default function ScoreBoard (props) {
   return (
     <div data-testId='ScoreBoard'>
       <Timer />
-      <div className="vsBox">
-        <div className="scoreContainer player">
+      <div className='vsBox'>
+        <div className='scoreContainer player'>
           <h4 className='playerName'>{props.name}</h4>
           <h4>{`${props.score} ${props.score != 1 ? 'cats' : 'cat'}`} </h4>
         </div>
         <h3>VS</h3>
         <Ai
-            aiScore={props.aiScore}
-            setAiScore={props.setAiScore}
-          />
+          aiScore={props.aiScore}
+          setAiScore={props.setAiScore}
+        />
       </div>
       <CommentBoard
         score={props.score}

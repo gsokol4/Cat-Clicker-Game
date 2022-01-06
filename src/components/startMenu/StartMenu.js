@@ -84,9 +84,13 @@ function StartMenu (props) {
         <SelectTimer />
       </div>
       <MovingImg />
+      <MovingImg />
+      <MovingImg />
+      <MovingImg />
       <footer className='endGameFooter'>
         <p className='footerText'>Thank you for trying out my game :) for other samples of my work and to find out more about me as
-        a developer please visit <a className='footerLink' href='https://gabrielsokol.com'>my portfolio website</a>.</p>
+        a developer please visit <a className='footerLink' href='https://gabrielsokol.com'>my portfolio website</a>.
+        </p>
       </footer>
     </div>
   )

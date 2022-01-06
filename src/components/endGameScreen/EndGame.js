@@ -19,7 +19,7 @@ function EndGameScreen ({ state, aiScore }) {
       </div>
       <footer className='endGameFooter'>
         Thank you for trying out my game :) for other samples of my work and to find out more about me as
-        a developer please visit <br></br>
+        a developer please visit <br />
         <a className='footerLink' href='https://gabrielsokol.com'>my portfolio website</a>.
       </footer>
     </div>

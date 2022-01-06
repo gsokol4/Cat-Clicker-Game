@@ -31,8 +31,8 @@ export default function Ai ({ setAiScore, aiScore }) {
     }
   }, [aiScore.AiClickRate])
   return (
-    <div className="scoreContainer opponent">
-      <h4> opponent:<br></br>{randomName} </h4>
+    <div className='scoreContainer opponent'>
+      <h4> opponent:<br />{randomName} </h4>
       <h4>{`${aiScore.score} ${aiScore.score != 1 ? 'cats' : 'cat'}`} </h4>
     </div>
   )
