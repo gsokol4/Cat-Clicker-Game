@@ -4,6 +4,7 @@ import SelectTimer from './SelectTimer.js'
 import timerContext from '../context/timerContext.js'
 import GameDescription from './GameDescription.js'
 import MovingImg from './KittyGenerator'
+import Delay from '../auxiliaryFunctions/DelayComponent'
 import './startMenu.css'
 
 function StartMenu (props) {
@@ -83,10 +84,38 @@ function StartMenu (props) {
           </>}
         <SelectTimer />
       </div>
-      <MovingImg />
-      <MovingImg />
-      <MovingImg />
-      <MovingImg />
+      <Delay
+        delay={50}
+        Component={<MovingImg />}
+      />
+      <Delay
+        delay={2000}
+        Component={<MovingImg />}
+      />
+      <Delay
+        delay={4000}
+        Component={<MovingImg />}
+      />
+      <Delay
+        delay={6000}
+        Component={<MovingImg />}
+      />
+      <Delay
+        delay={8000}
+        Component={<MovingImg />}
+      />
+      <Delay
+        delay={1000}
+        Component={<MovingImg />}
+      />
+      <Delay
+        delay={3000}
+        Component={<MovingImg />}
+      />
+      <Delay
+        delay={5000}
+        Component={<MovingImg />}
+      />
       <footer className='endGameFooter'>
         <p className='footerText'>Thank you for trying out my game :) for other samples of my work and to find out more about me as
         a developer please visit <a className='footerLink' href='https://gabrielsokol.com'>my portfolio website</a>.
