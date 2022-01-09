@@ -15,10 +15,10 @@ const randomNumberToTen = () => {
   return num
 }
 
-export default function MakeCat ({delay }) {
+export default function MakeCat ({ delay }) {
   const [position, setPosition] = useState({
     right: inicializeTopPosition(),
-    top: 9,
+    top: -120,
     width: window.innerWidth,
     height: window.innerHeight,
     catPic: cats[randomArrayValue()]
