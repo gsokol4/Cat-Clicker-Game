@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: space-evenly;
 
-    background-color: royalblue;
+    background-color: rgb(168, 186, 238);
     width: 200px;
     height: 150px;
     overflow: hidden;
@@ -22,13 +22,14 @@
 
     overflow: hidden;
     white-space: nowrap;
+
 }
 .opponent{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 
-    background-color: red;
+    background-color: rgb(255, 94, 94);
     overflow: hidden;
     text-overflow: ellipsis;
     width: 200px;
