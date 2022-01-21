@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Game from './components/game/Game'
 import StartMenu from './components/startMenu/StartMenu'
 import EndGameScreen from './components/endGameScreen/EndGame'
-import groupCat from './images/groupCat.jpg'
+import InvalidSearch from './components/invalidSearch/InvalidSearch'
 import timerContext from './components/context/timerContext'
 import './App.css'
 import './paper.css'
@@ -163,6 +163,8 @@ function App () {
 
             </div>
           </Route>
+          <Route path='/404' component={InvalidSearch} />
+          <Redirect to='/404' />
         </Switch>
       </Router>
     </timerContext.Provider>

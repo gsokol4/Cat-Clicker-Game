@@ -3306,6 +3306,9 @@ nav .collapsible > label {
 }
 
  /* gabriel's styles */
+ .sectionTitle{
+  margin-top: 25px;
+}
 
 @media only screen and (max-width: 600px), (max-height: 400px) {
    h3{
@@ -3345,4 +3348,7 @@ nav .collapsible > label {
    .footer{
      font-size: .7em;
    }
+   .sectionTitle{
+    margin-top: 10px;
+  }
  }

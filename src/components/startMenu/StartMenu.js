@@ -54,7 +54,7 @@ function StartMenu (props) {
             Start Game
           </button>
         </Link>
-        <label className='gamerTagTitle' htmlFor='gamerTag'>User Name:</label>
+        <label className='gamerTagTitle sectionTitle' htmlFor='gamerTag'>User Name:</label>
         {toggleEditName === false &&
           <>
             <div className='userName' onClick={() => selectUserNameInput()}>

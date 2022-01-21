@@ -69,7 +69,7 @@ export default function MakeCat ({ delay }) {
       <img
         src={position.catPic}
         alt=''
-        className='f'
+        className='catImageStyles'
         style={currentPosition}
       />
     </>

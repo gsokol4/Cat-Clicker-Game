@@ -1,14 +1,15 @@
 import { useContext } from 'react'
 import timerContext from '../context/timerContext'
 import clock from '../auxiliaryFunctions/clock'
+import './selectTimer.css'
 
 export default function SelectTimer (props) {
   const timerObj = useContext(timerContext)
 
   return (
     <>
+      <label className='sectionTitle'> Select Match Time Limit </label>
       <h4>{clock(timerObj.timer)}</h4>
-      <label> Select Match Time Limit </label>
       <div className='options'>
         <div className='form-check'>
           <label>

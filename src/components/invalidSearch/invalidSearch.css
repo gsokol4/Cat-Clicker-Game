@@ -1,0 +1,25 @@
+.invalidCatImage{
+  width: 400px;
+}
+.invalidPage{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../../images/crupledPaper.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.invalidTitle{
+  font-size: 32px;
+}
+
+.subTextSmall{
+  font-size: 24px;
+}
+
+.subTextMedium{
+  font-size: 28px;
+}
