@@ -50,7 +50,6 @@
       "expect"
     ]
   },
-  "proxy": "http://localhost:3001",
   "engines": {
     "node": "12.13.0"
   }
