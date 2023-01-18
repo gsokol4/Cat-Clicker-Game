@@ -49,7 +49,7 @@ function StartMenu (props) {
         className='body'
       >
         <GameDescription />
-        <Link to='/game' className='text-link'>
+        <Link to='cat-clicker/game' className='text-link'>
           <button className='paper-btn start'>
             Start Game
           </button>

@@ -7,7 +7,7 @@ export default function InvalidSearch () {
   return (
     <div className='invalidPage'>
       <h1 className='invalidTitle'>On no! This is a 404 Error!</h1>
-      <Link to='/'>
+      <Link to='/cat-clicker'>
         <button>Take me home buttercup!</button>
       </Link>
       <h3 className='subTextSmall'>

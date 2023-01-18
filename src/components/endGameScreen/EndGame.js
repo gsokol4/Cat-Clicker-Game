@@ -13,7 +13,7 @@ function EndGameScreen ({ state, aiScore }) {
         {state.score < aiScore.score && <Loss />}
         <h5 className='endGamePlayerScore article subtext'>your score: {state.score}</h5>
         <h5 className='endGameAiScore article subtext'>Ai's score: {aiScore.score}</h5>
-        <Link to='/'>
+        <Link to='/cat-clicker'>
           <button>back to menu</button>
         </Link>
       </div>

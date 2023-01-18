@@ -122,7 +122,7 @@ function App () {
     <timerContext.Provider value={timerObj}>
       <Router>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/cat-clicker'>
 
             <StartMenu
               name={name}
@@ -134,7 +134,7 @@ function App () {
             />
 
           </Route>
-          <Route path='/game'>
+          <Route path='/cat-clicker/game'>
             <div style={background} className='App'>
               {timerObj.timer > 0 &&
                 <>
@@ -164,6 +164,7 @@ function App () {
             </div>
           </Route>
           <Route path='/404' component={InvalidSearch} />
+          <Redirect exact path='/cat-clicker/cat-clicker/game' to='/cat-clicker/game' />
           <Redirect to='/404' />
         </Switch>
       </Router>
